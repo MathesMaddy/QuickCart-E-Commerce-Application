@@ -91,7 +91,7 @@ export default function Checkout() {
             {!productInfos.length && (
                 <div className = "h-screen flex justify-center items-center "> No Product in your shopping cart. </div>
             )}
-            {productInfos.length && (
+            {productInfos.length > 0 && (
                 <div className="w-full bg-gray-200 mb-3 p-3 flex justify-between">
                     <h1>shopping</h1>
                     <h2 className="font-medium">Items: {selectedProducts.length}</h2>            
@@ -99,7 +99,7 @@ export default function Checkout() {
             )}
             {productInfos.length > 0 && productInfos.map( productInfo => (
                 <div className = "flex mb-5" key = {productInfo._id}>
-                    <div className = "bg-gray-100 p-3 rounded-xl w-28 shrink-0">
+                    <div className = "p-1 rounded-xl w-28 shrink-0">
                         <img src = {productInfo.picture} alt = {productInfo.name} className="h-full object-contain" />
                     </div>
                     <div className = "pl-4">
