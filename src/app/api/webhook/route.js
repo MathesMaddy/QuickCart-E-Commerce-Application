@@ -6,14 +6,17 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 export async function POST(request) {
     
     await initMongoose(); 
-
+    console.log(request);
     const SigningSecret = process.env.STRIPE_WEBHOOK_SECRET;
     const payload = await request.text(); 
+    console.log(payload);
     const signature = await request.headers.get('stripe-signature');
 
+    console.log(signature);
+
     const event = await stripe.webhooks.constructEvent(payload, signature, SigningSecret);
-    
     console.log(event);
+    
     if(event?.type === 'checkout.session.completed') {        
         const metadata = await event.data?.object?.metadata;
         console.log(metadata);
