@@ -25,7 +25,7 @@ export default function Home() {
     }, []);
   
     const categoriesNames = [ ...new Set(productsInfo.map(p => p.category)) ]       
-
+    console.log(productsInfo);
     let product = '';
     if(search) {
       product = productsInfo.filter( p => p.name.toLowerCase().includes(search) )
